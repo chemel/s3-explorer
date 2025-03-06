@@ -9,18 +9,16 @@ use Symfony\Component\Console\Output\OutputInterface;
 use App\Service\S3Service;
 
 #[AsCommand(
-    name: 'app:bucket:list',
+    name: 'app:buckets-list',
     description: 'Buckets list',
 )]
-class BucketListCommand extends Command
+class BucketsListCommand extends Command
 {
     public function __construct(
         protected S3Service $s3Service
     ) {
         parent::__construct();
     }
-
-    protected function configure(): void {}
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
