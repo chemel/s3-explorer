@@ -59,4 +59,21 @@ class S3Service
 
         return $objects['Contents'] ?? $objects['Contents'];
     }
+
+    /**
+     * Get an object from a bucket
+     * 
+     * @param string $bucket
+     * @param string $key
+     * @return array
+     */
+    public function getObject(string $bucket, string $key): string
+    {
+        $object = $this->getClient()->getObject([
+            'Bucket' => $bucket,
+            'Key' => $key
+        ]);
+
+        return $object['Body'] ?? $object['Body'];
+    }
 }

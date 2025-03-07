@@ -27,6 +27,7 @@ final class BucketController extends AbstractController{
         $objects = $s3Service->getBucketObjects($name);
 
         return $this->render('bucket/show.html.twig', [
+            'bucket' => $name,
             'objects' => $objects,
         ]);
     }

@@ -9,7 +9,9 @@
     <ul>
         {% for object in objects %}
         <li>
-            {{ object.Key }}
+            <a href="{{ path('app_object_download', {'bucket': bucket, 'key': object.Key}) }}">
+                {{ object.Key }}
+            </a>
         </li>
         {% endfor %}
     </ul>
