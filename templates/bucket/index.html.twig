@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Buckets list{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Buckets list</h1>
+    <ul>
+        {% for bucket in buckets %}
+        <li>
+            <a href="{{ path('app_bucket_show', {'name': bucket.Name}) }}">{{ bucket.Name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

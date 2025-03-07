@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objects list{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Objects list</h1>
+    <ul>
+        {% for object in objects %}
+        <li>
+            {{ object.Key }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

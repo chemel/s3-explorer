@@ -10,7 +10,12 @@ class S3Service
 
     public function __construct() {}
 
-    public function getClient()
+    /**
+     * Get the S3 client
+     * 
+     * @return S3Client
+     */ 
+    public function getClient(): S3Client
     {
         if ($this->client) {
             return $this->client;
@@ -26,5 +31,32 @@ class S3Service
                 'secret' => $_ENV['AWS_SECRET_KEY']
             ]
         ]);
+    }
+
+    /**
+     * Get all buckets
+     * 
+     * @return array
+     */
+    public function getBuckets(): array
+    {
+        $buckets = $this->getClient()->listBuckets();
+
+        return $buckets['Buckets'] ?? $buckets['Buckets'];
+    }
+
+    /**
+     * Get all objects in a bucket
+     * 
+     * @param string $bucket
+     * @return array
+     */ 
+    public function getBucketObjects(string $bucket): array
+    {
+        $objects = $this->getClient()->listObjects([
+            'Bucket' => $bucket
+        ]);
+
+        return $objects['Contents'] ?? $objects['Contents'];
     }
 }
